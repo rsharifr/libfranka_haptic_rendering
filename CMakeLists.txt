@@ -175,6 +175,11 @@ if(BUILD_EXAMPLES)
   add_subdirectory(examples)
 endif()
 
+option(BUILD_HAPTIC_RENDERING "Build haptic rendering programs" ON)
+if(BUILD_HAPTIC_RENDERING)
+  add_subdirectory(hapticRendering)
+endif()
+
 option(BUILD_DOCUMENTATION "Build documentation" OFF)
 if(BUILD_DOCUMENTATION)
   add_subdirectory(doc)
@@ -197,12 +202,14 @@ include(CPack)
 file(GLOB_RECURSE SOURCES
   src/*.cpp
   examples/*.cpp
+  hapticRendering/*.cpp
   common/*.cpp
 )
 file(GLOB_RECURSE HEADERS
   include/*.h
   src/*.h
   examples/*.h
+  hapticRendering/*.h
   common/*.h
 )
 file(GLOB_RECURSE TEST_FILES
